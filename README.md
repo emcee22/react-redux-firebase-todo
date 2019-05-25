@@ -1,4 +1,18 @@
+An interactive `todo` created with `React`, `Redux`, `Firebase`, `Firebase Auth`, `Firebase Realtime Database`.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## INSTRUCTIONS BEFORE READING BELOW
+
+1. Create a new firebase project to obtain your `config`;
+
+2. Then create a new firebase database names `todos`
+
+3. In the `Authentication` part in `Sign-in method` enable the provider you want to use. For this project I used google but you can enable others as well, just don't forget to update `firebase.js`
+
+4. Go into your project and replace the content of the `firebase.js.dist` with your own firebase configuration and rename the file to `firebase.js`
+
+5. `npm install` and you are ready to go!
 
 ## Available Scripts
 
