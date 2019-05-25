@@ -12,7 +12,7 @@ export default class AddNewItem extends React.Component {
 
 	toggleVisibility = () => {
 		// remove this -> left here to not flood the database
-		if (this.props.todos.length >= 5) {
+		if (this.props.todos.length >= 10) {
 			alert(
 				'Maximum limit reached, clear some of the todos to add new ones'
 			);
