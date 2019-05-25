@@ -9,13 +9,15 @@ export default (state = { todos: [], loading: true }, action) => {
 	switch (action.type) {
 		case FETCH_TODOS_START:
 			return { ...state, loading: true };
+
 		case FETCH_TODOS_ERROR:
-			// store error -> we can use it somewhere
 			return { ...state, loading: false, error: action.error };
+
 		case FETCH_TODOS_COMPLETED:
 			return { ...state, loading: false };
+
 		case FETCH_TODOS_EVENT:
-			// order by priority
+			// order by priority first
 			if (!action.payload) return { ...state, todos: [], loading: false };
 			const orderedTodos = Object.keys(action.payload)
 				.map(key => {
@@ -24,6 +26,7 @@ export default (state = { todos: [], loading: true }, action) => {
 				})
 				.sort((a, b) => b.priority.localeCompare(a.priority));
 			return { ...state, todos: orderedTodos, loading: false };
+
 		default:
 			return state;
 	}

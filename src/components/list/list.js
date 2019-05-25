@@ -37,6 +37,7 @@ export default class List extends React.Component {
 						<th scope='col'>Priority</th>
 						<th scope='col'>Due date</th>
 						<th scope='col'>Complete</th>
+						<th scope='col'>Add by</th>
 					</tr>
 				</thead>
 				<tbody>{this.renderTodo()}</tbody>

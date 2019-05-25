@@ -76,6 +76,10 @@ export default class ListItem extends React.Component {
 	render() {
 		const { todo } = this.props;
 		const { timePassed } = this.state;
+		const imgStyles = {
+			maxWidth: '30px',
+			paddingRight: '5px'
+		};
 		return (
 			<tr className={timePassed ? 'text-muted' : ''}>
 				{this.renderStatus()}
@@ -94,6 +98,12 @@ export default class ListItem extends React.Component {
 					>
 						Done
 					</Button>
+				</td>
+				<td>
+					{todo.photoURL && (
+						<img style={imgStyles} src={todo.photoURL} alt='User' />
+					)}
+					{todo.displayName}
 				</td>
 			</tr>
 		);

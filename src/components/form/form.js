@@ -1,6 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import { Form, Button } from 'react-bootstrap';
+import { priority } from '../../constants/index';
 
 export default class AddForm extends React.Component {
 	constructor(props) {
@@ -8,16 +9,20 @@ export default class AddForm extends React.Component {
 		this.state = {
 			name: '',
 			priority: '0',
-			date: moment().format('YYYY-MM-DDTHH:mm'),
+			date: moment()
+				.add(2, 'hours')
+				.format('YYYY-MM-DDTHH:mm'),
 			validated: false
 		};
 	}
 
+	// update states on input change
 	inputChange = e => {
 		const { name, value } = e.target;
 		this.setState({ [name]: value });
 	};
 
+	// validate, submit and reset
 	formSubmitted = event => {
 		event.preventDefault();
 		event.stopPropagation();
@@ -39,6 +44,17 @@ export default class AddForm extends React.Component {
 		});
 	};
 
+	renderPriorityOptions = () => {
+		const options = Object.keys(priority).map(key => {
+			return (
+				<option key={key} value={key}>
+					{priority[key].title}
+				</option>
+			);
+		});
+		return options;
+	};
+
 	render() {
 		const { name, priority, date, validated } = this.state;
 		return (
@@ -56,9 +72,7 @@ export default class AddForm extends React.Component {
 						onChange={this.inputChange}
 						name='priority'
 					>
-						<option value='2'>High</option>
-						<option value='1'>Medium</option>
-						<option value='0'>Low</option>
+						{this.renderPriorityOptions()}
 					</Form.Control>
 				</Form.Group>
 

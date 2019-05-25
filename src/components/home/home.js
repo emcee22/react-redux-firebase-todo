@@ -21,14 +21,18 @@ export default class Header extends React.Component {
 		const { todos, loading } = todoData;
 		return (
 			<div>
+				{/* component for adding new todo */}
 				<AddNewItem formSubmit={addTodo} todos={todos} />
 
+				{/* show loader when data is loading */}
 				{loading && <Loader />}
 
+				{/* display todos */}
 				{todos.length > 0 && (
 					<List todos={todos} completeTodo={completeTodo} />
 				)}
 
+				{/* display placeholder for empty state */}
 				{!todos.length && (
 					<h6>You don't have anything on your agenda!</h6>
 				)}
