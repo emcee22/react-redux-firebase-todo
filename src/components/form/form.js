@@ -6,6 +6,7 @@ import { priority } from '../../constants/index';
 export default class AddForm extends React.Component {
 	constructor(props) {
 		super(props);
+
 		this.state = {
 			name: '',
 			priority: '0',
@@ -17,8 +18,8 @@ export default class AddForm extends React.Component {
 	}
 
 	// update states on input change
-	inputChange = e => {
-		const { name, value } = e.target;
+	inputChange = event => {
+		const { name, value } = event.target;
 		this.setState({ [name]: value });
 	};
 
@@ -44,7 +45,7 @@ export default class AddForm extends React.Component {
 		});
 	};
 
-	renderPriorityOptions = () => {
+	renderPriorityOptions() {
 		const options = Object.keys(priority).map(key => {
 			return (
 				<option key={key} value={key}>
@@ -53,10 +54,11 @@ export default class AddForm extends React.Component {
 			);
 		});
 		return options;
-	};
+	}
 
 	render() {
 		const { name, priority, date, validated } = this.state;
+
 		return (
 			<Form
 				noValidate

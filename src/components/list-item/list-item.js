@@ -6,9 +6,9 @@ import { Button } from 'react-bootstrap';
 export default class ListItem extends React.Component {
 	constructor(props) {
 		super(props);
+
 		this.state = {
 			intervalId: 0,
-			timeRemaining: 0,
 			timePassed: false,
 			dueDateSoon: false
 		};
@@ -24,19 +24,21 @@ export default class ListItem extends React.Component {
 	}
 
 	componentWillUnmount() {
-		// use intervalId from the state to clear the interval
+		// clear interval
 		clearInterval(this.state.intervalId);
 	}
 
 	timer() {
+		// get the difference in days between the current date and the todo due date
+		const currentDate = moment(new Date());
 		const end = moment(this.props.todo.date);
-		const duration = moment.duration(end.diff(this.props.dateToCompare));
-		const minutes = duration.asDays();
+		const duration = moment.duration(end.diff(currentDate));
+		const days = duration.asDays();
 
+		// update state
 		this.setState({
-			timeRemaining: minutes,
-			timePassed: minutes < 0,
-			dueDateSoon: minutes >= 0 && minutes <= 1
+			timePassed: days < 0,
+			dueDateSoon: days >= 0 && days <= 1
 		});
 	}
 
@@ -80,6 +82,7 @@ export default class ListItem extends React.Component {
 			maxWidth: '30px',
 			paddingRight: '5px'
 		};
+
 		return (
 			<tr className={timePassed ? 'text-muted' : ''}>
 				{this.renderStatus()}

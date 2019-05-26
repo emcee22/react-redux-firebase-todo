@@ -7,6 +7,7 @@ import Loader from '../loader/loader';
 export default class Header extends React.Component {
 	constructor(props) {
 		super(props);
+
 		this.state = {
 			loading: true
 		};
@@ -19,6 +20,7 @@ export default class Header extends React.Component {
 	render() {
 		const { completeTodo, addTodo, todoData } = this.props;
 		const { todos, loading } = todoData;
+
 		return (
 			<div>
 				{/* component for adding new todo */}

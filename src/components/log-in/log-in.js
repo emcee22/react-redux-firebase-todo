@@ -4,6 +4,7 @@ import { Button } from 'react-bootstrap';
 export default class LogIn extends React.Component {
 	render() {
 		const { signInWithGoogle } = this.props;
+
 		return (
 			<div className='h-100 d-flex justify-content-center align-items-center text-center'>
 				<div>

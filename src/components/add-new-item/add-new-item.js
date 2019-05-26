@@ -5,12 +5,13 @@ import Form from '../form/form';
 export default class AddNewItem extends React.Component {
 	constructor(props) {
 		super(props);
+
 		this.state = {
 			visible: false
 		};
 	}
 
-	toggleVisibility = () => {
+	toggleVisibility() {
 		// this is for testing, you can remove this block
 		if (this.props.todos.length >= 10) {
 			alert(
@@ -19,7 +20,7 @@ export default class AddNewItem extends React.Component {
 			return;
 		}
 		this.setState({ visible: !this.state.visible });
-	};
+	}
 
 	formSubmitted = item => {
 		this.props.formSubmit(item);
@@ -28,6 +29,7 @@ export default class AddNewItem extends React.Component {
 
 	render() {
 		const { visible } = this.state;
+
 		return (
 			<div className='py-3'>
 				<Button
